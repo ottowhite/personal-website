@@ -48,7 +48,7 @@ export default function Sidebar() {
 
 			{/* Sidebar */}
 			<div
-				className={`fixed left-0 top-0 h-screen bg-gray-900 p-6 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+				className={`fixed left-0 top-0 h-screen bg-gray-900/95 p-6 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
 					} md:translate-x-0 w-64 z-40`}
 			>
 				<div className="mb-8">
@@ -71,14 +71,6 @@ export default function Sidebar() {
 					</ul>
 				</nav>
 			</div>
-
-			{/* Overlay */}
-			{isOpen && (
-				<div
-					className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-					onClick={() => setIsOpen(false)}
-				/>
-			)}
 		</>
 	);
 } 
