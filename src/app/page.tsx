@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
@@ -9,7 +11,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <img
+          <Image
             src="/skatepark.jpg"
             alt="Skatepark"
             className="w-full max-w-md rounded-lg"
