@@ -1,12 +1,7 @@
 'use client';
 
+import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline';
 import {
-	EnvelopeIcon,
-	DocumentTextIcon,
-	PhoneIcon,
-} from '@heroicons/react/24/outline';
-import {
-	EnvelopeIcon as EnvelopeIconSolid,
 	DocumentTextIcon as DocumentTextIconSolid,
 	UserGroupIcon as UserGroupIconSolid,
 } from '@heroicons/react/24/solid';
