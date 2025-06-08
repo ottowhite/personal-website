@@ -6,6 +6,7 @@ import {
 	UserGroupIcon as UserGroupIconSolid,
 } from '@heroicons/react/24/solid';
 import { FaYoutube, FaGithub } from 'react-icons/fa';
+import { FaGoogleScholar } from 'react-icons/fa6';
 
 export default function Links() {
 	const email = 'otto.white20@imperial.ac.uk';
@@ -14,6 +15,7 @@ export default function Links() {
 	const githubUrl = 'https://github.com/ottowhite';
 	const youtubeUrl = 'https://www.youtube.com/@ottowhite9742';
 	const cvUrl = 'https://github.com/ottowhite/cv/blob/main/build/main.pdf';
+	const scholarUrl = 'https://scholar.google.com/citations?user=4R3wLJgAAAAJ&hl=en';
 
 	return (
 		<div className="flex min-h-[calc(100vh-4rem)] flex-col items-start justify-center px-4">
@@ -21,7 +23,7 @@ export default function Links() {
 				<div>
 					<h1 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h1>
 					<p className="text-lg text-gray-400">
-						Feel free to reach out to me via email or connect with me on social media
+						Feel free to reach out to me via email, phone, or connect with me on social media. You can also find my CV below, my publications on Google Scholar, and my presentations on my YouTube channel.
 					</p>
 				</div>
 
@@ -79,6 +81,18 @@ export default function Links() {
 							className="text-xl text-gray-300 hover:text-white transition-colors"
 						>
 							CV
+						</a>
+					</div>
+
+					<div className="flex items-center space-x-4">
+						<FaGoogleScholar className="h-8 w-8 text-gray-400" />
+						<a
+							href={scholarUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-xl text-gray-300 hover:text-white transition-colors"
+						>
+							Google Scholar
 						</a>
 					</div>
 
