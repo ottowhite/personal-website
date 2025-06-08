@@ -8,6 +8,56 @@ import {
 import { FaYoutube, FaGithub } from 'react-icons/fa';
 import { FaGoogleScholar } from 'react-icons/fa6';
 
+type IconType = 'email' | 'phone' | 'linkedin' | 'github' | 'cv' | 'scholar' | 'youtube';
+
+interface LinkEntryProps {
+	type: IconType;
+	href: string;
+	label: string;
+	isExternal?: boolean;
+}
+
+const getIcon = (type: IconType) => {
+	const iconClass = "h-10 w-10 md:h-8 md:w-8 text-gray-400";
+
+	switch (type) {
+		case 'email':
+			return <EnvelopeIcon className={iconClass} />;
+		case 'phone':
+			return <PhoneIcon className={iconClass} />;
+		case 'linkedin':
+			return <UserGroupIconSolid className={iconClass} />;
+		case 'github':
+			return <FaGithub className={iconClass} />;
+		case 'cv':
+			return <DocumentTextIconSolid className={iconClass} />;
+		case 'scholar':
+			return <FaGoogleScholar className={iconClass} />;
+		case 'youtube':
+			return <FaYoutube className={iconClass} />;
+	}
+};
+
+const LinkEntry = ({ type, href, label, isExternal = false }: LinkEntryProps) => {
+	const linkProps = isExternal ? {
+		target: "_blank",
+		rel: "noopener noreferrer"
+	} : {};
+
+	return (
+		<div className="flex items-center space-x-4">
+			{getIcon(type)}
+			<a
+				href={href}
+				className="text-xl text-gray-300 hover:text-white transition-colors"
+				{...linkProps}
+			>
+				{label}
+			</a>
+		</div>
+	);
+};
+
 export default function Links() {
 	const email = 'otto.white20@imperial.ac.uk';
 	const phone = '+44 7462 003706';
@@ -28,85 +78,13 @@ export default function Links() {
 				</div>
 
 				<div className="bg-gray-900/50 rounded-lg p-8 shadow-lg space-y-6">
-					<div className="flex items-center space-x-4">
-						<EnvelopeIcon className="h-8 w-8 text-gray-400" />
-						<a
-							href={`mailto:${email}`}
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							{email}
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<PhoneIcon className="h-8 w-8 text-gray-400" />
-						<a
-							href={`tel:${phone}`}
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							{phone}
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<UserGroupIconSolid className="h-8 w-8 text-gray-400" />
-						<a
-							href={linkedinUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							LinkedIn
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<FaGithub className="h-8 w-8 text-gray-400" />
-						<a
-							href={githubUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							GitHub
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<DocumentTextIconSolid className="h-8 w-8 text-gray-400" />
-						<a
-							href={cvUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							CV
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<FaGoogleScholar className="h-8 w-8 text-gray-400" />
-						<a
-							href={scholarUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							Google Scholar
-						</a>
-					</div>
-
-					<div className="flex items-center space-x-4">
-						<FaYoutube className="h-8 w-8 text-gray-400" />
-						<a
-							href={youtubeUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-xl text-gray-300 hover:text-white transition-colors"
-						>
-							YouTube
-						</a>
-					</div>
+					<LinkEntry type="email" href={`mailto:${email}`} label={email} />
+					<LinkEntry type="phone" href={`tel:${phone}`} label={phone} />
+					<LinkEntry type="linkedin" href={linkedinUrl} label="LinkedIn" isExternal />
+					<LinkEntry type="github" href={githubUrl} label="GitHub" isExternal />
+					<LinkEntry type="cv" href={cvUrl} label="CV" isExternal />
+					<LinkEntry type="scholar" href={scholarUrl} label="Google Scholar" isExternal />
+					<LinkEntry type="youtube" href={youtubeUrl} label="YouTube" isExternal />
 				</div>
 
 				<p className="text-gray-500 text-sm">
