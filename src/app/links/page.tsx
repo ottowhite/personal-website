@@ -49,7 +49,7 @@ const LinkEntry = ({ type, href, label, isExternal = false }: LinkEntryProps) =>
 			{getIcon(type)}
 			<a
 				href={href}
-				className="text-xl text-gray-300 hover:text-white transition-colors"
+				className="text-xl text-gray-300 hover:text-white transition-colors break-all"
 				{...linkProps}
 			>
 				{label}
