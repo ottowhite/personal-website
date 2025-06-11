@@ -34,7 +34,7 @@ export default function RootLayout({
             <h1 className="text-xl font-bold text-white ml-4">Otto White</h1>
           </div>
         </div>
-        <main className="min-h-screen p-4 md:p-8 md:ml-64 relative z-[35] pt-20">
+        <main className="min-h-screen p-4 md:p-8 relative z-[35] pt-20">
           {children}
         </main>
       </body>
