@@ -60,7 +60,6 @@ const LinkEntry = ({ type, href, label, isExternal = false }: LinkEntryProps) =>
 
 export default function Links() {
 	const email = 'otto.white20@imperial.ac.uk';
-	const phone = '+44 7462 003706';
 	const linkedinUrl = 'https://www.linkedin.com/in/otto-white/';
 	const githubUrl = 'https://github.com/ottowhite';
 	const youtubeUrl = 'https://www.youtube.com/@ottowhite9742';
@@ -79,7 +78,6 @@ export default function Links() {
 
 				<div className="bg-gray-900/50 rounded-lg p-8 shadow-lg space-y-6">
 					<LinkEntry type="email" href={`mailto:${email}`} label={email} />
-					<LinkEntry type="phone" href={`tel:${phone}`} label={phone} />
 					<LinkEntry type="linkedin" href={linkedinUrl} label="LinkedIn" isExternal />
 					<LinkEntry type="github" href={githubUrl} label="GitHub" isExternal />
 					<LinkEntry type="cv" href={cvUrl} label="CV" isExternal />
