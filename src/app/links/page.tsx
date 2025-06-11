@@ -67,7 +67,7 @@ export default function Links() {
 	const scholarUrl = 'https://scholar.google.com/citations?user=4R3wLJgAAAAJ&hl=en';
 
 	return (
-		<div className="flex min-h-[calc(100vh-4rem)] flex-col items-start justify-center px-4">
+		<div className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4">
 			<div className="max-w-2xl w-full space-y-8">
 				<div>
 					<h1 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h1>
