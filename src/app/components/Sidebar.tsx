@@ -17,7 +17,7 @@ export default function Sidebar() {
 		<>
 			{/* Mobile menu button */}
 			<button
-				className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg bg-gray-800 hover:bg-gray-700"
+				className="md:hidden p-2 rounded-lg hover:bg-gray-700"
 				onClick={() => setIsOpen(!isOpen)}
 			>
 				<svg
@@ -46,12 +46,9 @@ export default function Sidebar() {
 
 			{/* Sidebar */}
 			<div
-				className={`fixed left-0 top-0 h-screen bg-gray-900/95 p-6 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+				className={`fixed left-0 top-16 h-[calc(100vh-4rem)] bg-gray-900/95 p-6 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
 					} md:translate-x-0 w-64 z-40`}
 			>
-				<div className="mb-8">
-					<h1 className="text-2xl font-bold text-white">Otto White</h1>
-				</div>
 				<nav>
 					<ul className="space-y-2">
 						{navItems.map((item) => (
