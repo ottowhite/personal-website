@@ -4,9 +4,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-const navItems = [
+interface NavItem {
+	name: string;
+	path: string;
+	isExternal?: boolean;
+}
+
+const navItems: NavItem[] = [
 	{ name: 'Home', path: '/' },
 	{ name: 'Links', path: '/links' },
+	{ name: 'Oversight', path: 'https://oversight-rho.vercel.app/', isExternal: true },
 ];
 
 export default function Sidebar() {
@@ -53,14 +60,26 @@ export default function Sidebar() {
 					<ul className="space-y-2">
 						{navItems.map((item) => (
 							<li key={item.path}>
-								<Link
-									href={item.path}
-									className={`block rounded-lg px-4 py-2 text-gray-300 transition-colors hover:bg-gray-800 hover:text-white ${pathname === item.path ? 'bg-gray-800 text-white' : ''
-										}`}
-									onClick={() => setIsOpen(false)}
-								>
-									{item.name}
-								</Link>
+								{item.isExternal ? (
+									<a
+										href={item.path}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="block rounded-lg px-4 py-2 text-gray-300 transition-colors hover:bg-gray-800 hover:text-white"
+										onClick={() => setIsOpen(false)}
+									>
+										{item.name}
+									</a>
+								) : (
+									<Link
+										href={item.path}
+										className={`block rounded-lg px-4 py-2 text-gray-300 transition-colors hover:bg-gray-800 hover:text-white ${pathname === item.path ? 'bg-gray-800 text-white' : ''
+											}`}
+										onClick={() => setIsOpen(false)}
+									>
+										{item.name}
+									</Link>
+								)}
 							</li>
 						))}
 					</ul>
