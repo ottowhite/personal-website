@@ -25,6 +25,7 @@ npm run lint
 ## Project Structure
 
 - **`src/app/`** - Next.js App Router pages and API routes
+
   - `layout.tsx` - Root layout with Sidebar component, fonts (Geist Sans/Mono), and dark theme setup
   - `page.tsx` - Home page with welcome content and image
   - `links/page.tsx` - Contact/links page with social media and professional links
@@ -37,12 +38,14 @@ npm run lint
 ## Key Technical Details
 
 ### Navigation Architecture
+
 - The Sidebar is a client component (`'use client'`) embedded in the root layout
 - Navigation items are defined in `Sidebar.tsx` as an array of `NavItem` objects
 - Supports both internal Next.js Links and external links (marked with `isExternal` flag)
 - Sidebar is collapsed by default and uses slide-in animation
 
 ### Styling
+
 - Uses Tailwind CSS 4 with PostCSS
 - Dark theme enforced via `className="dark"` on `<html>` element
 - Custom color scheme: gray-950 background, gray-100 text
@@ -50,12 +53,14 @@ npm run lint
 - Main content has padding-top to account for fixed header
 
 ### TypeScript Configuration
+
 - Path alias: `@/*` maps to `./src/*`
 - Target: ES2017
 - Strict mode enabled
 - Module resolution: bundler
 
 ### Development Environment
+
 - Nix flake available for reproducible development environment setup
 - Uses Next.js 15 with Turbopack for fast development
 
@@ -74,6 +79,7 @@ npm run lint
 ## Git Workflow
 
 Make atomic commits with conventional commit style:
+
 - `feat:` - New features
 - `fix:` - Bug fixes
 - `docs:` - Documentation changes
@@ -83,3 +89,5 @@ Make atomic commits with conventional commit style:
 - `chore:` - Maintenance tasks
 
 Each commit should represent a single logical change.
+
+Push after every commit.
