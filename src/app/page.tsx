@@ -1,5 +1,5 @@
-import Image from 'next/image';
-const lsdsLink = 'https://lsds.doc.ic.ac.uk/';
+import Image from "next/image";
+const lsdsLink = "https://lsds.doc.ic.ac.uk/";
 
 export default function Home() {
   return (
@@ -7,14 +7,16 @@ export default function Home() {
       <div className="flex flex-col md:flex-row items-start gap-8 max-w-6xl w-full">
         <div className="flex-1">
           <div className="mb-6">
-            <span className="text-green-500">$</span> <span className="text-green-400">cat welcome.txt</span>
+            <span className="text-green-500">$</span>{" "}
+            <span className="text-green-400">cat welcome.txt</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">
             <span className="text-green-500">&gt;</span> WELCOME
           </h1>
           <div className="text-base md:text-lg text-green-400/90 space-y-4 font-mono leading-relaxed">
             <p>
-              <span className="text-green-500">→</span> I&apos;m Otto, a first year PhD student at the{' '}
+              <span className="text-green-500">→</span> I&apos;m Otto, a second
+              year PhD student at the{" "}
               <a
                 href={lsdsLink}
                 target="_blank"
@@ -22,13 +24,14 @@ export default function Home() {
                 className="text-green-300 hover:text-green-100 underline decoration-green-500/50 hover:decoration-green-300"
               >
                 Large-Scale Data and Systems group
-              </a>
-              {' '}at Imperial College London.
+              </a>{" "}
+              at Imperial College London.
             </p>
             <p>
-              <span className="text-green-500">→</span> I&apos;m excited to be focussing on the
-              performance and efficiency of distributed AI systems, and supporting
-              these rapidly evolving workloads and heterogenous hardwares in the data centre.
+              <span className="text-green-500">→</span> I&apos;m excited to be
+              focussing on the performance and efficiency of distributed AI
+              systems, and supporting these rapidly evolving workloads and
+              heterogenous hardwares in the data centre.
             </p>
           </div>
           <div className="mt-6 text-green-500/70">
