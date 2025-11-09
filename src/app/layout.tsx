@@ -26,17 +26,29 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-950 text-gray-100`}
+        className={`${geistMono.variable} antialiased bg-black text-green-400 font-mono`}
       >
-        <div className="fixed top-0 left-0 right-0 h-16 bg-gray-900/95 z-50">
-          <div className="h-full flex items-center px-4">
-            <Sidebar />
-            <h1 className="text-xl font-bold text-white ml-4">Otto White</h1>
-          </div>
+        {/* Top border - terminal window style */}
+        <div className="fixed top-0 left-0 right-0 h-8 bg-black border-b border-green-500/30 z-50 flex items-center px-4">
+          <span className="text-green-400 text-sm">otto@terminal:~$</span>
         </div>
-        <main className="min-h-screen p-4 md:p-8 relative z-[35] pt-20">
+
+        {/* Left sidebar - vim treesitter style */}
+        <Sidebar />
+
+        {/* Main content area */}
+        <main className="min-h-screen ml-64 mt-8 mb-10 p-6 bg-black">
           {children}
         </main>
+
+        {/* Bottom status bar - TMUX style */}
+        <div className="fixed bottom-0 left-0 right-0 h-10 bg-green-500 z-50 flex items-center px-4 text-black font-bold text-sm">
+          <div className="flex items-center gap-6">
+            <span className="bg-black text-green-400 px-3 py-1 rounded">[0] otto@terminal</span>
+            <span>~</span>
+            <span className="ml-auto">{new Date().toLocaleTimeString('en-US', { hour12: false })}</span>
+          </div>
+        </div>
       </body>
     </html>
   );

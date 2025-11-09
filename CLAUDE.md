@@ -88,6 +88,6 @@ Make atomic commits with conventional commit style:
 - `test:` - Adding or updating tests
 - `chore:` - Maintenance tasks
 
-Each commit should represent a single logical change.
+Each commit should represent a single logical change. Ask if the change is satisfactory before committing.
 
 Push after every commit.

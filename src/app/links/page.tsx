@@ -1,55 +1,24 @@
 'use client';
 
-import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline';
-import {
-	DocumentTextIcon as DocumentTextIconSolid,
-	UserGroupIcon as UserGroupIconSolid,
-} from '@heroicons/react/24/solid';
-import { FaYoutube, FaGithub } from 'react-icons/fa';
-import { FaGoogleScholar } from 'react-icons/fa6';
-
-type IconType = 'email' | 'phone' | 'linkedin' | 'github' | 'cv' | 'scholar' | 'youtube';
-
 interface LinkEntryProps {
-	type: IconType;
 	href: string;
 	label: string;
+	prefix: string;
 	isExternal?: boolean;
 }
 
-const getIcon = (type: IconType) => {
-	const iconClass = "h-10 w-10 md:h-8 md:w-8 text-gray-400";
-
-	switch (type) {
-		case 'email':
-			return <EnvelopeIcon className={iconClass} />;
-		case 'phone':
-			return <PhoneIcon className={iconClass} />;
-		case 'linkedin':
-			return <UserGroupIconSolid className={iconClass} />;
-		case 'github':
-			return <FaGithub className={iconClass} />;
-		case 'cv':
-			return <DocumentTextIconSolid className={iconClass} />;
-		case 'scholar':
-			return <FaGoogleScholar className={iconClass} />;
-		case 'youtube':
-			return <FaYoutube className={iconClass} />;
-	}
-};
-
-const LinkEntry = ({ type, href, label, isExternal = false }: LinkEntryProps) => {
+const LinkEntry = ({ href, label, prefix, isExternal = false }: LinkEntryProps) => {
 	const linkProps = isExternal ? {
 		target: "_blank",
 		rel: "noopener noreferrer"
 	} : {};
 
 	return (
-		<div className="flex items-center space-x-4">
-			{getIcon(type)}
+		<div className="flex items-start space-x-2 font-mono">
+			<span className="text-green-500">{prefix}</span>
 			<a
 				href={href}
-				className="text-xl text-gray-300 hover:text-white transition-colors break-all"
+				className="text-green-400 hover:text-green-300 underline decoration-green-500/50 hover:decoration-green-300 break-all transition-colors"
 				{...linkProps}
 			>
 				{label}
@@ -67,28 +36,41 @@ export default function Links() {
 	const scholarUrl = 'https://scholar.google.com/citations?user=4R3wLJgAAAAJ&hl=en';
 
 	return (
-		<div className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4">
-			<div className="max-w-2xl w-full space-y-8">
+		<div className="flex min-h-[calc(100vh-8rem)] flex-col justify-center">
+			<div className="max-w-3xl w-full space-y-8">
+				<div className="mb-6">
+					<span className="text-green-500">$</span> <span className="text-green-400">cat contact.txt</span>
+				</div>
+
 				<div>
-					<h1 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h1>
-					<p className="text-lg text-gray-400">
-						Feel free to reach out to me via email, phone, or connect with me on social media. You can also find my CV below, my publications on Google Scholar, and my presentations on my YouTube channel.
+					<h1 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">
+						<span className="text-green-500">&gt;</span> GET IN TOUCH
+					</h1>
+					<p className="text-base text-green-400/90 font-mono leading-relaxed mb-6">
+						Feel free to reach out via any of the channels below. You can also find my CV,
+						publications on Google Scholar, and presentations on my YouTube channel.
 					</p>
 				</div>
 
-				<div className="bg-gray-900/50 rounded-lg p-8 shadow-lg space-y-6">
-					<LinkEntry type="email" href={`mailto:${email}`} label={email} />
-					<LinkEntry type="linkedin" href={linkedinUrl} label="LinkedIn" isExternal />
-					<LinkEntry type="github" href={githubUrl} label="GitHub" isExternal />
-					<LinkEntry type="cv" href={cvUrl} label="CV" isExternal />
-					<LinkEntry type="scholar" href={scholarUrl} label="Google Scholar" isExternal />
-					<LinkEntry type="youtube" href={youtubeUrl} label="YouTube" isExternal />
+				<div className="border border-green-500/30 p-6 space-y-4 bg-black">
+					<div className="text-green-500/70 text-sm mb-4 font-mono border-b border-green-500/30 pb-2">
+						[CONTACT_INFO]
+					</div>
+					<LinkEntry prefix="📧" href={`mailto:${email}`} label={email} />
+					<LinkEntry prefix="💼" href={linkedinUrl} label="LinkedIn" isExternal />
+					<LinkEntry prefix="🐙" href={githubUrl} label="GitHub" isExternal />
+					<LinkEntry prefix="📄" href={cvUrl} label="CV" isExternal />
+					<LinkEntry prefix="🎓" href={scholarUrl} label="Google Scholar" isExternal />
+					<LinkEntry prefix="🎥" href={youtubeUrl} label="YouTube" isExternal />
 				</div>
 
-				<p className="text-gray-500 text-sm">
-					I typically respond within 1-2 months, apart from my gold tier email
-					subscription list, in which I will respond within 24 hours.
+				<p className="text-green-500/70 text-sm font-mono">
+					<span className="text-green-500">#</span> Response time: 1-2 months (24h for gold tier subscribers)
 				</p>
+
+				<div className="text-green-500/70">
+					<span className="terminal-cursor">_</span>
+				</div>
 			</div>
 		</div>
 	);
