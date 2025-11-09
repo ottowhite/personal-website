@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
 	{ name: 'Home', path: '/' },
 	{ name: 'Links', path: '/links' },
 	{ name: 'Oversight', path: 'https://oversight-rho.vercel.app/', isExternal: true },
+	{ name: 'Workout Planner', path: 'https://workout-planner-ivory.vercel.app/', isExternal: true },
 ];
 
 export default function Sidebar() {
