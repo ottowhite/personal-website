@@ -7,32 +7,26 @@ interface NavItem {
 	name: string;
 	path: string;
 	isExternal?: boolean;
-	icon: string;
 }
 
 const navItems: NavItem[] = [
-	{ name: 'Home', path: '/', icon: '󰋜' },
-	{ name: 'Links', path: '/links', icon: '󰌷' },
-	{ name: 'Oversight', path: 'https://oversight-rho.vercel.app/', isExternal: true, icon: '󰖟' },
-	{ name: 'Workout Planner', path: 'https://workout-planner-ivory.vercel.app/', isExternal: true, icon: '󰊓' },
+	{ name: 'Home', path: '/' },
+	{ name: 'Links', path: '/links' },
+	{ name: 'Oversight', path: 'https://oversight-rho.vercel.app/', isExternal: true },
+	{ name: 'Workout Planner', path: 'https://workout-planner-ivory.vercel.app/', isExternal: true },
 ];
 
 export default function Sidebar() {
 	const pathname = usePathname();
 
 	return (
-		<div className="fixed left-0 top-8 h-[calc(100vh-7rem)] w-64 bg-black border-r border-green-500/30 z-40 overflow-y-auto">
-			<div className="p-4 border-b border-green-500/30">
-				<div className="text-green-400 text-sm mb-2">
-					<span className="text-green-500">~</span>/otto-white
-				</div>
-			</div>
+		<div className="fixed left-0 top-8 h-[calc(100vh-3.5rem)] w-80 bg-black border-r border-green-500/30 z-40 overflow-y-auto">
 			<nav className="p-4">
 				<div className="space-y-1 font-mono text-sm">
 					{/* Tree structure header */}
 					<div className="text-green-500/70 mb-3">
 						<span>├── </span>
-						<span className="text-green-400">navigation</span>
+						<span className="text-green-400">/</span>
 					</div>
 					{navItems.map((item, index) => {
 						const isActive = pathname === item.path;
@@ -53,7 +47,7 @@ export default function Sidebar() {
 										}`}
 									>
 										<span className="text-green-500/70">│   {treeChar} </span>
-										<span>{item.icon}</span> {item.name}
+										{item.name}
 										<span className="text-green-500/50 ml-1">↗</span>
 									</a>
 								) : (
@@ -66,7 +60,7 @@ export default function Sidebar() {
 										}`}
 									>
 										<span className="text-green-500/70">│   {treeChar} </span>
-										<span>{item.icon}</span> {item.name}
+										{item.name}
 									</Link>
 								)}
 							</div>

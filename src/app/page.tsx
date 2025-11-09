@@ -36,19 +36,14 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <div className="border-2 border-green-500/30 p-2">
-            <Image
-              src="/skatepark.jpg"
-              alt="Skatepark"
-              className="w-full h-auto max-w-md grayscale contrast-125 brightness-90"
-              width={1000}
-              height={1000}
-              priority
-            />
-            <div className="text-green-500/70 text-xs mt-2 font-mono">
-              [image: skatepark.jpg]
-            </div>
-          </div>
+          <Image
+            src="/skatepark.jpg"
+            alt="Skatepark"
+            className="w-full h-auto max-w-md grayscale contrast-125 brightness-90"
+            width={1000}
+            height={1000}
+            priority
+          />
         </div>
       </div>
     </div>
