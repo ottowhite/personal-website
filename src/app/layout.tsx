@@ -23,7 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const hostname = "ubuntu-server-01";
+  const hostname = "you@ottos-website";
   const currentDate = new Date();
   const timeStr = currentDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
   const dateStr = currentDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' }).replace(/ /g, '-');
@@ -31,18 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistMono.variable} antialiased bg-black text-green-400 font-mono`}
+        className={`${geistMono.variable} antialiased bg-black text-gray-100 font-mono`}
       >
-        {/* Top border - terminal window style */}
-        <div className="fixed top-0 left-0 right-0 h-8 bg-black border-b border-green-500/30 z-50 flex items-center px-4">
-          <span className="text-green-400 text-sm">otto@{hostname}:~$</span>
-        </div>
-
         {/* Left sidebar - vim treesitter style */}
         <Sidebar />
 
         {/* Main content area */}
-        <main className="min-h-screen ml-80 mt-8 mb-7 p-6 bg-black">
+        <main className="min-h-screen ml-64 mb-7 p-6 bg-black">
           {children}
         </main>
 
