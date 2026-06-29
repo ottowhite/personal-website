@@ -17,6 +17,7 @@
             nodejs_20
             nodePackages.npm
             tailwindcss
+            gnumake
           ];
           shellHook = ''
             exec zsh
