@@ -42,7 +42,9 @@ export default function RootLayout({
         <Sidebar />
 
         {/* Main content area */}
-        <main className="min-h-screen ml-64 mb-7 p-6 bg-black">{children}</main>
+        <main className="min-h-screen ml-0 md:ml-64 mb-7 p-4 pt-14 md:p-6 bg-black">
+          {children}
+        </main>
 
         {/* Bottom status bar - TMUX style */}
         <div className="fixed bottom-0 left-0 right-0 h-6 bg-green-500 z-50 flex items-center px-4 text-black font-bold text-xs">

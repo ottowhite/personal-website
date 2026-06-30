@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TreeNode {
 	name: string;
@@ -127,29 +127,64 @@ function TreeItem({ node, depth, isLast, parentPrefix }: TreeItemProps) {
 }
 
 export default function Sidebar() {
-	return (
-		<div className="fixed left-0 top-0 h-[calc(100vh-1.5rem)] w-64 bg-gray-950 border-r border-gray-800 z-40 overflow-y-auto">
-			<nav className="p-3">
-				<div className="font-mono text-xs leading-relaxed">
-					{/* Root indicator */}
-					<div className="text-gray-500 mb-1 px-2">
-						<span className="text-blue-400">~</span>
-						<span className="text-gray-600">/</span>
-						<span className="text-blue-300">website</span>
-					</div>
+	const [isOpen, setIsOpen] = useState(false);
+	const pathname = usePathname();
 
-					{/* File tree */}
-					{fileTree.map((node, index) => (
-						<TreeItem
-							key={node.name}
-							node={node}
-							depth={0}
-							isLast={index === fileTree.length - 1}
-							parentPrefix=""
-						/>
-					))}
-				</div>
-			</nav>
-		</div>
+	// Close the mobile drawer whenever the route changes.
+	useEffect(() => {
+		setIsOpen(false);
+	}, [pathname]);
+
+	return (
+		<>
+			{/* Mobile toggle button - hidden on desktop where the sidebar is docked */}
+			<button
+				type="button"
+				onClick={() => setIsOpen((open) => !open)}
+				aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
+				aria-expanded={isOpen}
+				className="md:hidden fixed top-2 left-2 z-50 flex h-9 w-9 items-center justify-center rounded border border-gray-700 bg-gray-950 text-blue-300 font-mono text-base leading-none hover:bg-gray-800/70 transition-colors"
+			>
+				{isOpen ? '✕' : '≡'}
+			</button>
+
+			{/* Backdrop - only on mobile when the drawer is open */}
+			{isOpen && (
+				<div
+					className="md:hidden fixed inset-0 z-30 bg-black/60"
+					onClick={() => setIsOpen(false)}
+					aria-hidden="true"
+				/>
+			)}
+
+			{/* Sidebar - off-canvas drawer on mobile, permanently docked on desktop */}
+			<div
+				className={`fixed left-0 top-0 h-[calc(100vh-1.5rem)] w-64 bg-gray-950 border-r border-gray-800 z-40 overflow-y-auto transform transition-transform duration-200 ease-in-out md:translate-x-0 ${
+					isOpen ? 'translate-x-0' : '-translate-x-full'
+				}`}
+			>
+				<nav className="p-3 pt-12 md:pt-3">
+					<div className="font-mono text-xs leading-relaxed">
+						{/* Root indicator */}
+						<div className="text-gray-500 mb-1 px-2">
+							<span className="text-blue-400">~</span>
+							<span className="text-gray-600">/</span>
+							<span className="text-blue-300">website</span>
+						</div>
+
+						{/* File tree */}
+						{fileTree.map((node, index) => (
+							<TreeItem
+								key={node.name}
+								node={node}
+								depth={0}
+								isLast={index === fileTree.length - 1}
+								parentPrefix=""
+							/>
+						))}
+					</div>
+				</nav>
+			</div>
+		</>
 	);
-} 
+}
